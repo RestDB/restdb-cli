@@ -2,6 +2,7 @@
   "name": "restdb-cli",
   "version": "1.0.0",
   "description": "restdb.io deployment and dev tools",
+  "url" : "https://github.com/RestDB/restdb-cli",
   "main": "index.js",
   "scripts": {
     "test": "node index.js"
@@ -19,7 +20,9 @@
   "author": "Jon Erik Solheim",
   "license": "ISC",
   "dependencies": {
+    "archiver": "^1.3.0",
     "command-line-args": "^3.0.4",
+    "command-line-usage": "^3.0.8",
     "request": "^2.79.0"
   }
 }
