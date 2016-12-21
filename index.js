@@ -15,6 +15,7 @@ const sections = [
     content: [
       { name: 'help', summary: 'Display help information about restdb-cli.' },
       { name: 'apikey', summary: 'Full access apikey to your restdb.io server.' },
+      { name: 'database', summary: 'Database name, e.g. mydatabase-ffe0' },
       { name: 'deploy', summary: 'Deploy folder (recursive) to restdb.io server.' },
       { name: 'destination', summary: 'Destination folder for deployment folder at the restdb.io server.' }
     ]
@@ -26,6 +27,7 @@ const usage = getUsage(sections)
 const optionDefinitions = [
   { name: 'help' },
   { name: 'apikey' },
+  { name: 'database', alias: 'n'},
   { name: 'deploy', alias: 'd'},
   { name: 'destination', alias: 'r'}
 ]
@@ -37,4 +39,6 @@ if (options.help || isEmpty) {
   return;
 }
 
-console.log("Starting ...")
+if (options.deploy) {
+  require('./deploy_cmd').run(options);
+}
