@@ -10,10 +10,10 @@ const sections = [
   },
   {
     header: 'restdb-cli',
-    content: '$ restdb-cli <options> <command>'
+    content: '$ restdb-cli <arguments>'
   },
   {
-    header: 'Command List',
+    header: 'Arguments',
     content: [
       { name: 'help', summary: 'Display help information about restdb-cli.' },
       { name: 'apikey', summary: 'Full access apikey to your restdb.io server.' },
