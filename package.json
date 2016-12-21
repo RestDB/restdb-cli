@@ -2,6 +2,7 @@
   "name": "restdb-cli",
   "version": "1.0.0",
   "description": "restdb.io deployment and dev tools",
+  "readme": "README.md",
   "url" : "https://github.com/RestDB/restdb-cli",
   "main": "index.js",
   "scripts": {
