@@ -4,9 +4,12 @@
   "description": "restdb.io deployment and dev tools",
   "readme": "README.md",
   "url" : "https://github.com/RestDB/restdb-cli",
-  "main": "index.js",
+  "main": "./index.js",
   "scripts": {
     "test": "node index.js"
+  },
+  "bin": {
+    "restdb-cli": "./index.js"
   },
   "keywords": [
     "restdb",
