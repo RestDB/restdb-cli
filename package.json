@@ -1,13 +1,13 @@
 {
   "name": "restdb-cli",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "restdb.io deployment and dev tools",
   "readme": "README.md",
   "repository": {
         "type": "git",
         "url": "https://github.com/RestDB/restdb-cli"
   },
-  "url" : "https://restdb.io",
+  "url" : "https://github.com/RestDB/restdb-cli",
   "main": "./index.js",
   "scripts": {
     "test": "node index.js"
