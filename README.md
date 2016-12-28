@@ -14,11 +14,15 @@ $ restdb-cli <arguments>
 
 Arguments
 
-  help:          Display help information about restdb-cli.                        
-  apikey:        Full access api-key to your restdb.io server.
-  database:      Database name.                   
-  deploy:        Deploy folder (recursive) to restdb.io server.                    
-  destination:   Destination folder for deployment folder at the restdb.io server.
+help:          Display help information about restdb-cli.
+
+apikey:        Full access api-key to your restdb.io server.
+
+database:      Database name.                   
+
+deploy:        Deploy folder (recursive) to restdb.io server.                    
+
+destination:   Destination folder for deployment folder at the restdb.io server.
 
 Example:
   ```
