@@ -28,4 +28,6 @@ Copy all files and folders from a local directory to server
 Example:
   ```
   $ restdb-cli --cmd upload --src ./dist --dest /myapp --database mydatabase-ffe0 --apikey 234r23479x73098n2453987d324
+
+  Files will be served under https://mydatabase-ffe0.restdb.io/static/myapp
   ```
