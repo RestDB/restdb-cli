@@ -18,10 +18,7 @@ Commands:
 
 Copy all files and folders from a local directory to server
 
-
-Arguments:
-
-| arguments | description |
+| argument | description |
 | :-- | :-- |
 | --apikey | Full access api-key to your restdb.io server |
 | --database | Database name |
