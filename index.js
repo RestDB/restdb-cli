@@ -9,38 +9,49 @@ const sections = [
     content: 'Command line tool for restdb.io database applications.'
   },
   {
-    header: 'restdb-cli',
-    content: '$ restdb-cli <arguments>'
+    header: 'Synopsis',
+    content: '$ restdb-cli --cmd <command> <arguments>'
   },
   {
-    header: 'Arguments',
+    header: 'Command list'
+  },
+  {
+    header: 'upload',
     content: [
-      { name: 'help', summary: 'Display help information about restdb-cli.' },
-      { name: 'apikey', summary: 'Full access apikey to your restdb.io server.' },
-      { name: 'database', summary: 'Database name, e.g. mydatabase-ffe0' },
-      { name: 'deploy', summary: 'Deploy folder (recursive) to restdb.io server.' },
-      { name: 'destination', summary: 'Destination folder for deployment folder at the restdb.io server.' }
+      { name: '--apikey', summary: 'Full access apikey to your restdb.io server.' },
+      { name: '--database', summary: 'Database name, e.g. mydatabase-ffe0' },
+      { name: '--src', summary: 'Deploy local folder (recursive) to restdb.io server.' },
+      { name: '--dest', summary: 'Destination folder for deployment folder at the restdb.io server.' }
     ]
+  },
+  {
+    header: 'example',
+    content: 'restdb-cli --cmd upload --src dist --dest app --database mydb-xfg3 --apikey xxx'
   }
 ]
 
 const usage = getUsage(sections)
 
 const optionDefinitions = [
+  { name: 'cmd', default: 'upload' },
   { name: 'help' },
   { name: 'apikey' },
-  { name: 'database', alias: 'n'},
-  { name: 'deploy', alias: 'd'},
-  { name: 'destination', alias: 'r'}
+  { name: 'database'},
+  { name: 'src'},
+  { name: 'dest'}
 ]
 const options = commandLineArgs(optionDefinitions);
 var isEmpty = (Object.keys(options).length === 0 && options.constructor === Object);
-console.log(options, isEmpty);
+
+//console.log(options, isEmpty);
+
 if (options.help || isEmpty) {
   console.log(usage);
   return;
 }
 
-if (options.deploy) {
+if (options.cmd && options.cmd === 'upload') {
   require('./deploy_cmd').run(options);
+} else {
+  console.log(options.cmd, " id not a valid command");
 }

@@ -9,22 +9,25 @@ $ npm install restdb-cli -g
 
 Usage:
 ```
-$ restdb-cli <arguments>
+$ restdb-cli <command> <arguments>
 ```
 
-Arguments
+Commands:
 
-help:          Display help information about restdb-cli.
+## upload
 
-apikey:        Full access api-key to your restdb.io server.
+Copy all files and folders from a local directory to server
 
-database:      Database name.                   
 
-deploy:        Deploy folder (recursive) to restdb.io server.                    
-
-destination:   Destination folder for deployment folder at the restdb.io server.
+Arguments:
+| arguments | description |
+| -- | -- |
+| --apikey | Full access api-key to your restdb.io server |
+| --database | Database name |
+| --src | Deploy folder (recursive) to restdb.io server |
+| --dest | Destination folder for deployment folder at the restdb.io server |
 
 Example:
   ```
-  $ restdb-cli --deploy ./dist --destination /myapp --database mydatabase-ffe0 --apikey 234r23479x73098n2453987d324
+  $ restdb-cli --cmd upload --src ./dist --dest /myapp --database mydatabase-ffe0 --apikey 234r23479x73098n2453987d324
   ```
