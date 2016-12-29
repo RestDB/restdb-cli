@@ -38,5 +38,5 @@ Remove all static files and folders from database
 
 | argument | description |
 | :-- | :-- |
-| --apikey | Full access api-key to your restdb.io database |
+| --apikey | Full access api-key |
 | --database | Database name |
