@@ -4,51 +4,69 @@ var archiver = require('archiver');
 var request = require('request');
 var tmp = require('tmp');
 
-exports.run = function(options){
-  // create a file to stream archive data to.
-  var zipfile = tmp.tmpNameSync();
-  //var zipfile = './tmpfile.zip';
-  var dest = options.dest;
-  var dbname = options.database;
-  var apikey = options.apikey;
-  var deploy = options.src;
-  var output = fs.createWriteStream(zipfile);
-  var archive = archiver('zip', {
-      store: true // Sets the compression method to STORE.
-  });
+exports.run = function(options) {
+    // create a file to stream archive data to.
+    options = options || {};
+    var zipfile = tmp.tmpNameSync();
 
-  // listen for all archive data to be written
-  output.on('close', function() {
-    console.log(archive.pointer() + ' total bytes');
-    console.log('archiver has been finalized and the output file descriptor has closed.');
-    var zipstream = fs.createReadStream(zipfile);
+    var errors = false;
+    if (!options.database) {
+        console.log("Missing required parameter --database");
+        errors = true;
+    }
+    if (!options.apikey) {
+        console.log("Missing required parameter --apikey");
+        errors = true;
+    }
+    if (!options.src) {
+        console.log("Missing required parameter --src");
+        errors = true;
+    }
+    if (errors) return;
 
-    request.post(
-      { url:'https://'+dbname+'.restdb.io/appdeploy/'+dest,
-        rejectUnauthorized: false,
-        headers:{ 'x-apikey': apikey,
-                  'Content-Type':'application/octet-stream'},
-        body: zipstream
-      }, function optionalCallback(err, httpResponse, body) {
-        fs.unlinkSync(zipfile);
-        if (err) {
-          return console.error('upload failed:', err);
-        }
-        console.log('Upload successful!  Server responded with:', body);
-        }
-      );
-  });
+    var output = fs.createWriteStream(zipfile);
+    var archive = archiver('zip', {
+        store: true // Sets the compression method to STORE.
+    });
 
-  // good practice to catch this error explicitly
-  archive.on('error', function(err) {
-    throw err;
-  });
+    // listen for all archive data to be written
+    output.on('close', function() {
+        var zipstream = fs.createReadStream(zipfile);
+        request.post({
+            url: 'https://' + options.database + '.restdb.io/appdeploy/' + options.dest,
+            rejectUnauthorized: false,
+            headers: {
+                'x-apikey': options.apikey,
+                'Content-Type': 'application/octet-stream'
+            },
+            body: zipstream
+        }, function optionalCallback(err, httpResponse, body) {
+            fs.unlinkSync(zipfile);
+            if (err || httpResponse.statusCode !== 200) {
+                var message = err && err.message ? err.message : "";
+                if (httpResponse.statusCode === 403) {
+                    message += " no access"
+                }
+                if (httpResponse.statusCode === 503) {
+                    message += " database not found"
+                }
+                return console.error('Upload failed:', message);
+            } else {
+                console.log("\nUpload successful!  " + archive.pointer() + " total bytes uploaded");
+            }
+        });
+    });
 
-  // pipe archive data to the file
-  archive.pipe(output);
-  // append files from a directory
-  archive.directory(deploy);
+    // good practice to catch this error explicitly
+    archive.on('error', function(err) {
+        console.log("Unable to package files for upload " + err.message);
+    });
 
-  // finalize the archive (ie we are done appending files but streams have to finish yet)
-  archive.finalize();
+    // pipe archive data to the file
+    archive.pipe(output);
+    // append files from a directory
+    archive.directory(options.src);
+
+    // finalize the archive (ie we are done appending files but streams have to finish yet)
+    archive.finalize();
 }

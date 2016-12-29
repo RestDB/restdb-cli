@@ -16,18 +16,27 @@ Commands:
 
 ## upload
 
-Copy all files and folders from a local directory to server
+Copy all files and folders from a local directory to restdb.io database static file area
 
 | argument | description |
 | :-- | :-- |
-| --apikey | Full access api-key to your restdb.io database |
+| --apikey | Full access api-key |
 | --database | Database name |
-| --src | Deploy folder (recursive) to restdb.io server |
-| --dest | Destination folder for deployment folder at the restdb.io server |
+| --src |  Folder to deploy (recursive) |
+| --dest | Destination folder (default is '.') |
 
 Example:
   ```
   $ restdb-cli --cmd upload --src ./dist --dest /myapp --database mydatabase-ffe0 --apikey 234r23479x73098n2453987d324
 
-  Files will be served under https://mydatabase-ffe0.restdb.io/static/myapp
+  Files will be served under https://mydatabase-ffe0.restdb.io/static/myapp or https://mydatabase-ffe0.restdb.io/static if --dest is '.' or not given.
   ```
+
+## clean
+
+Remove all static files and folders from database
+
+| argument | description |
+| :-- | :-- |
+| --apikey | Full access api-key to your restdb.io database |
+| --database | Database name |
