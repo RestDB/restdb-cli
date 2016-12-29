@@ -6,7 +6,7 @@ var tmp = require('tmp');
 
 exports.run = function(options){
   // create a file to stream archive data to.
-  var zipname = tmp.tmpNameSync();
+  var zipfile = tmp.tmpNameSync();
   //var zipfile = './tmpfile.zip';
   var dest = options.dest;
   var dbname = options.database;

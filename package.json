@@ -1,6 +1,6 @@
 {
   "name": "restdb-cli",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "restdb.io command line tools",
   "repository": {
     "type": "git",
