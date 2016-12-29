@@ -1,6 +1,6 @@
 # restdb-cli
 
-Command line tool for restdb.io database applications.
+Command line tool for [restdb.io](https://restdb.io) database applications.
 
 Install:
 ```
@@ -9,7 +9,7 @@ $ npm install restdb-cli -g
 
 Usage:
 ```
-$ restdb-cli <command> <arguments>
+$ restdb-cli --cmd <command> [<arguments> ...]
 ```
 
 Commands:
