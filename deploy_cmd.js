@@ -2,10 +2,12 @@
 var fs = require('fs');
 var archiver = require('archiver');
 var request = require('request');
+var tmp = require('tmp');
 
 exports.run = function(options){
   // create a file to stream archive data to.
-  var zipfile = './tmpfile.zip';
+  var zipname = tmp.tmpNameSync();
+  //var zipfile = './tmpfile.zip';
   var dest = options.dest;
   var dbname = options.database;
   var apikey = options.apikey;
