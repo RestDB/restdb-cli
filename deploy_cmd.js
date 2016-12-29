@@ -5,7 +5,7 @@ var request = require('request');
 
 exports.run = function(options){
   // create a file to stream archive data to.
-  var zipfile = __dirname + '/tmpfile.zip';
+  var zipfile = './tmpfile.zip';
   var dest = options.dest;
   var dbname = options.database;
   var apikey = options.apikey;

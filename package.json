@@ -1,6 +1,6 @@
 {
   "name": "restdb-cli",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "restdb.io command line tools",
   "repository": {
         "type": "git",
@@ -22,7 +22,8 @@
     "static",
     "web",
     "server",
-    "spa"
+    "spa",
+    "static"
   ],
   "author": "Jon Erik Solheim",
   "license": "ISC",

@@ -20,7 +20,7 @@ Copy all files and folders from a local directory to server
 
 | argument | description |
 | :-- | :-- |
-| --apikey | Full access api-key to your restdb.io server |
+| --apikey | Full access api-key to your restdb.io database |
 | --database | Database name |
 | --src | Deploy folder (recursive) to restdb.io server |
 | --dest | Destination folder for deployment folder at the restdb.io server |
