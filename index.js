@@ -70,6 +70,7 @@ switch (options.cmd) {
         break;
     case 'clean':
         require('./clean_cmd').run(options);
+        break;
     case undefined:
         console.log("Missing command parameter: --cmd");
         break;
