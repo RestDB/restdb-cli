@@ -77,8 +77,12 @@ switch (options.cmd) {
         break;
     case 'clean':
         require('./clean_cmd').run(options);
+<<<<<<< HEAD
     case 'download':
         require('./download_cmd').run(options);
+=======
+        break;
+>>>>>>> 56305c5d005c55d8968af60871577055645e785b
     case undefined:
         console.log("Missing command parameter: --cmd");
         break;
