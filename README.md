@@ -40,3 +40,12 @@ Remove all static files and folders from database
 | :-- | :-- |
 | --apikey | Full access api-key |
 | --database | Database name |
+
+## download
+
+Download static files for a database to a local folder
+
+| argument | description |
+| :-- | :-- |
+| --apikey | Full access api-key |
+| --database | Database name |

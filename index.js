@@ -34,6 +34,13 @@ const sections = [{
             { name: '--database', summary: 'Database name, e.g. mydatabase-ffe0' }
         ]
     },
+    {
+        header: 'download',
+        content: [
+            { name: '--apikey', summary: 'Full access apikey to your restdb.io server.' },
+            { name: '--database', summary: 'Database name, e.g. mydatabase-ffe0' }
+        ]
+    }
 ]
 
 const usage = getUsage(sections)
@@ -70,6 +77,8 @@ switch (options.cmd) {
         break;
     case 'clean':
         require('./clean_cmd').run(options);
+    case 'download':
+        require('./download_cmd').run(options);
     case undefined:
         console.log("Missing command parameter: --cmd");
         break;
