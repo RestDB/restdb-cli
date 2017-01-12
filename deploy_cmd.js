@@ -50,7 +50,7 @@ exports.run = function(options) {
                 if (httpResponse.statusCode === 503) {
                     message += " database not found"
                 }
-                return console.error('Upload failed:', message);
+                return console.error('Upload failed:', httpResponse.statusCode, message, err);
             } else {
                 console.log("\nUpload successful!  " + archive.pointer() + " total bytes uploaded");
             }

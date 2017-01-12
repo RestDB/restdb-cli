@@ -31,7 +31,9 @@ exports.run = function(options) {
         url: 'https://' + dbname + '.restdb.io/appdeploy'
     };
     var r = request(opt);
-
+    r.on('error',  function () {
+        console.log(arguments);
+    });
     r.on('response',  function (res) {
         
         var filename = dbname+".zip";
